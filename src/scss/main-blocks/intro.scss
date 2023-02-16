@@ -1,0 +1,82 @@
+.intro {
+	min-height: 100vh;
+	background: linear-gradient(
+			180deg,
+			#000000 10.42%,
+			rgba(0, 0, 0, 0.09375) 79.69%,
+			rgba(0, 0, 0, 0) 100%
+		),
+		linear-gradient(180deg, rgba(44, 44, 44, 0) 0%, #2c2c2c 100%),
+		url("../img/svg/map-big.svg") center no-repeat,
+		url("../img/intro/intro-bg.jpg") center / cover no-repeat;
+	&__container {
+		min-height: 100vh;
+		padding-top: 155px;
+		padding-bottom: 40px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__body {
+		max-width: 1144px;
+		margin: 0 auto;
+		text-align: center;
+		padding: 88px 69px 63px 68px;
+		@media (max-width: 575.98px) {
+			padding: 0;
+			padding-top: 20px;
+		}
+	}
+
+	&__title {
+		margin-bottom: 15px;
+		font-weight: 700;
+		font-size: 64px;
+		line-height: 77px;
+		color: $color-white;
+		@media (max-width: 991.98px) {
+			font-size: 45px;
+			line-height: 54px;
+		}
+		@media (max-width: 575.98px) {
+			font-size: 36px;
+			line-height: 44px;
+		}
+		@media (max-width: 374.98px) {
+			font-size: 25px;
+			line-height: 34px;
+		}
+	}
+
+	&__title-decor {
+		color: $color-accent;
+	}
+
+	&__subtitle {
+		margin-bottom: 20px;
+		font-size: 24px;
+		line-height: 29px;
+		color: $color-alto;
+		@media (max-width: 424.98px) {
+			font-size: 16px;
+			line-height: 20px;
+		}
+	}
+
+	&__btn {
+		max-width: 288px;
+	}
+
+	&__next-title {
+		text-align: center;
+		margin-top: auto;
+		font-weight: 700;
+		font-size: 48px;
+		line-height: 58px;
+		color: $color-white;
+		@media (max-width: 424.98px) {
+			font-size: 32px;
+			line-height: 39px;
+		}
+	}
+}

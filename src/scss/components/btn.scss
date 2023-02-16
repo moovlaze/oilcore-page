@@ -1,0 +1,28 @@
+.btn {
+	display: inline-block;
+	width: 100%;
+	padding: 15px;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 24px;
+	border-radius: 5px;
+	transition: all 0.2s ease;
+	&_shaded {
+		color: $color-white;
+		background-color: $color-accent;
+		&:hover,
+		&:active {
+			background-color: darken($color-accent, 20);
+		}
+	}
+	&_border {
+		color: $color-accent;
+		border: 2px solid $color-accent;
+		background-color: $color-white;
+		&:hover,
+		&:active {
+			color: darken($color-accent, 20);
+			background-color: darken($color-white, 30);
+		}
+	}
+}

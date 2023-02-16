@@ -59,12 +59,14 @@ li {
 	font-family: $font-family-inter;
 	font-weight: 400;
 }
+
 .main {
 	flex-grow: 1;
+	min-height: 100vh;
 }
 
 [class*="__container"] {
 	max-width: 1230px;
-	padding: 0 15p x;
+	padding: 0 15px;
 	margin: 0 auto;
 }
