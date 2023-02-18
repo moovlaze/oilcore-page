@@ -1,0 +1,85 @@
+.oilproducts {
+	background: url("../img/oilproducts/oilproducts-bg.jpg") center / cover
+		no-repeat;
+	@media (max-width: 767.98px) {
+		padding: 50px 0;
+		background: url("../img/oilproducts/oilproducts-bg-mobile.jpg") center /
+			cover no-repeat;
+	}
+	&__container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		@media (max-width: 767.98px) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+		}
+	}
+
+	&__item {
+		overflow: hidden;
+		&_right {
+			grid-column: 2/ 3;
+			margin-left: -10px;
+			border-radius: 0 30px 30px 0;
+			@media (max-width: 767.98px) {
+				grid-column: 1/2;
+			}
+		}
+		&_left {
+			grid-row: 2 / 3;
+			margin-right: -10px;
+			border-radius: 30px 0 0 30px;
+			@media (max-width: 767.98px) {
+				grid-column: 1/2;
+				grid-row: auto;
+			}
+		}
+		&:nth-child(3) {
+			grid-row: 3 / 4;
+			@media (max-width: 767.98px) {
+				grid-row: auto;
+			}
+		}
+		@media (max-width: 767.98px) {
+			margin: 0;
+			border-radius: 30px;
+			&:not(:last-child) {
+				margin-bottom: 100px;
+			}
+		}
+	}
+}
+.item-oilproducts {
+	padding: 96px 100px 96px 80px;
+	background: rgba(44, 44, 44, 0.8);
+	backdrop-filter: blur(2.5px);
+	@media (max-width: 1199.98px) {
+		padding: 50px;
+	}
+	@media (max-width: 424.98px) {
+		padding: 25px 30px;
+	}
+	&__title {
+		margin-bottom: 15px;
+		font-weight: 600;
+		font-size: 32px;
+		line-height: 39px;
+		color: $color-white;
+		@media (max-width: 424.98px) {
+			font-size: 24px;
+			line-height: 29px;
+		}
+	}
+
+	&__text {
+		margin-bottom: 30px;
+		font-size: 20px;
+		line-height: 24px;
+		color: $color-alto;
+		@media (max-width: 424.98px) {
+			font-size: 18px;
+			line-height: 22px;
+		}
+	}
+}

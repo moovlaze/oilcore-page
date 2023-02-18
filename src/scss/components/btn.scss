@@ -25,4 +25,8 @@
 			background-color: darken($color-white, 30);
 		}
 	}
+	@media (max-width: 424.98px) {
+		font-size: 18px;
+		line-height: 22px;
+	}
 }
