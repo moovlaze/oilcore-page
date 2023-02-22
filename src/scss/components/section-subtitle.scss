@@ -1,0 +1,14 @@
+.section-subtitle {
+	margin-top: 5px;
+	font-size: 24px;
+	line-height: 29px;
+	color: $color-scorpion;
+	@media (max-width: 575.98px) {
+		font-size: 18px;
+		line-height: 22px;
+	}
+	@media (max-width: 424.98px) {
+		font-size: 16px;
+		line-height: 19px;
+	}
+}

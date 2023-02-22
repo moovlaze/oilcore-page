@@ -1,0 +1,18 @@
+.section-title {
+	font-family: $font-family-rubik;
+	font-weight: 700;
+	font-size: 48px;
+	line-height: 57px;
+	color: $color-black;
+	@media (max-width: 575.98px) {
+		font-size: 36px;
+		line-height: 40px;
+	}
+	@media (max-width: 424.98px) {
+		font-size: 27px;
+		line-height: 32px;
+	}
+	&__highlight {
+		color: $color-accent;
+	}
+}
