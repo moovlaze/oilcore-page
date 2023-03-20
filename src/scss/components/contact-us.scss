@@ -1,0 +1,65 @@
+.contact-us {
+	padding: 135px 0;
+	background: url("../img/contact-us/contact-us-bg.jpg") 0 0 / cover no-repeat;
+
+	&__title {
+		margin-bottom: 10px;
+		font-weight: 600;
+		font-size: 36px;
+		line-height: 43px;
+		color: $color-white;
+	}
+
+	&__form {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 15px;
+		margin-bottom: 11px;
+	}
+
+	&__agreement {
+		display: block;
+		text-align: right;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		color: $color-white;
+	}
+	&__agreement-link {
+		text-decoration: underline;
+	}
+}
+.form-contact-us {
+	&__input {
+		flex: 1 1 400px;
+		height: 44px;
+		padding: 10px;
+		font-family: $font-family-inter;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 24px;
+		color: $color-white;
+		border: 1px solid #ffffff;
+		border-radius: 5px;
+		background: rgba(30, 30, 30, 0.7);
+		backdrop-filter: blur(2px);
+		&::placeholder {
+			font-family: inherit;
+			color: inherit;
+		}
+	}
+
+	&__btn {
+		flex: 0 1 370px;
+		padding: 10px;
+		font-family: $font-family-inter;
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 24px;
+		cursor: pointer;
+		@media (max-width: 575.98px) {
+			flex: 1 1 370px;
+		}
+	}
+}

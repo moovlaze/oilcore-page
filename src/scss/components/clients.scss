@@ -1,0 +1,32 @@
+.clients {
+	padding-bottom: 120px;
+	&__container {
+	}
+
+	&__top {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	&__title {
+	}
+
+	&__subtitle {
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 15px;
+	}
+
+	&__item {
+		flex: 1 0 auto;
+		display: flex;
+		justify-content: center;
+	}
+
+	&__img {
+	}
+}
