@@ -53,16 +53,13 @@ li {
 }
 
 .wrapper {
+	flex-grow: 1;
+	min-height: 100vh;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	font-family: $font-family-inter;
 	font-weight: 400;
-}
-
-.main {
-	flex-grow: 1;
-	min-height: 100vh;
 }
 
 [class*="__container"] {
