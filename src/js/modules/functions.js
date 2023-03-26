@@ -54,3 +54,28 @@ export const popupImg = function () {
 
 	popup.addEventListener("click", closePopup);
 };
+
+export const scrollToSection = function () {
+	const links = document.querySelectorAll("a[data-scroll-link]");
+	const sections = document.querySelectorAll("section[data-scroll-section]");
+
+	const scrollBehavior = (selector) => {
+		document.querySelector(`.${selector}`).scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	};
+
+	links.forEach((link) => {
+		let linkDataValue = link.dataset.scrollLink;
+
+		link.addEventListener("click", (e) => {
+			e.preventDefault();
+			sections.forEach((section) => {
+				if (section.dataset.scrollSection === linkDataValue) {
+					scrollBehavior(section.dataset.scrollSection);
+				}
+			});
+		});
+	});
+};
