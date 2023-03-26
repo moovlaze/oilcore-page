@@ -28,3 +28,29 @@ export const map = function () {
 	};
 	ymaps.ready(init);
 };
+
+export const popupImg = function () {
+	const images = document.querySelectorAll("img[data-popup-img]");
+	const popup = document.querySelector(".popup-img");
+
+	const openPopup = () => {
+		popup.classList.add("popup-img_visible");
+		document.body.classList.add("page_lock");
+	};
+
+	const closePopup = (e) => {
+		if (
+			!e.target.closest(".popup-img__body") ||
+			e.target.closest(".popup-img__close")
+		) {
+			popup.classList.remove("popup-img_visible");
+			document.body.classList.remove("page_lock");
+		}
+	};
+
+	images.forEach((img) => {
+		img.addEventListener("click", openPopup);
+	});
+
+	popup.addEventListener("click", closePopup);
+};
