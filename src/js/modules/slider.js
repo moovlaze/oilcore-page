@@ -1,6 +1,6 @@
 import Swiper, { Scrollbar } from "swiper";
 
-const slider = (selector) => {
+export const slider = (selector) => {
 	if (window.innerWidth >= 991) return;
 
 	const swiper = new Swiper(`${selector}`, {
@@ -16,11 +16,25 @@ const slider = (selector) => {
 				slidesPerView: 3,
 				spaceBetween: 30,
 			},
-			// 767: {
-			// 	slidesPerView: 4,
-			// },
 		},
 	});
 };
 
-export default slider;
+export const sliderTwo = () => {
+	if (window.innerWidth >= 991) return;
+
+	const swiper = new Swiper(".reviews__body", {
+		modules: [Scrollbar],
+		scrollbar: {
+			el: ".swiper-scrollbar",
+			draggable: true,
+		},
+		slidesPerView: 1,
+		spaceBetween: 15,
+		breakpoints: {
+			767: {
+				slidesPerView: 2,
+			},
+		},
+	});
+};

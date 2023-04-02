@@ -21,10 +21,9 @@
 	}
 
 	&__wrapper {
+		flex-wrap: wrap;
 		@media (max-width: 991.98px) {
-			display: flex;
-			align-items: flex-start;
-			overflow-x: scroll;
+			flex-wrap: nowrap;
 		}
 	}
 
@@ -33,11 +32,6 @@
 		align-items: center;
 		&:not(:last-child) {
 			margin-bottom: 30px;
-		}
-		@media (max-width: 991.98px) {
-			flex: 1 0 100%;
-			margin-bottom: 0;
-			margin-right: 20px;
 		}
 	}
 }
