@@ -45,7 +45,6 @@
 		line-height: 57px;
 		color: $color-black;
 		span {
-			text-transform: uppercase;
 			color: $color-accent;
 		}
 		@media (max-width: 767.98px) {
@@ -86,5 +85,13 @@
 		max-width: 444px;
 		margin: 0 auto;
 		text-align: center;
+		&_mini {
+			max-width: 100%;
+			margin-top: 20px;
+			padding: 10px;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 19px;
+		}
 	}
 }

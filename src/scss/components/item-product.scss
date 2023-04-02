@@ -27,5 +27,16 @@
 		font-size: 16px;
 		line-height: 140%;
 		color: $color-scorpion;
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
+		&_bold {
+			font-weight: 500;
+			line-height: 19px;
+			color: $color-black;
+			&:first-child {
+				margin-top: 15px;
+			}
+		}
 	}
 }

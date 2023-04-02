@@ -9,6 +9,45 @@
 		),
 		url(../img/hero/hero-bg.jpg) center/cover no-repeat;
 
+	&.other-img {
+		background: linear-gradient(
+				180deg,
+				#000000 10.42%,
+				rgba(0, 0, 0, 0.09375) 79.69%,
+				rgba(0, 0, 0, 0) 100%
+			),
+			url(../img/mini-gs/mini-gs-bg.jpg) center/cover no-repeat;
+	}
+	&__container {
+		position: relative;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: -100px;
+			background-image: url(../../img/svg/arrow-section-02.svg);
+			width: 58px;
+			height: 605px;
+		}
+		&::before {
+			left: -160px;
+		}
+		&::after {
+			right: -160px;
+		}
+		&.none-arrow {
+			&::before,
+			&::after {
+				display: none;
+			}
+		}
+		@media (max-width: 1679.98px) {
+			&::before,
+			&::after {
+				display: none;
+			}
+		}
+	}
 	&__title {
 		margin: 0 auto;
 		max-width: 830px;
@@ -40,6 +79,9 @@
 		filter: blur(150px);
 		border-radius: 50px;
 	}
+}
+.hero-body-mini {
+	padding: 100px 0;
 }
 .hero-points {
 	display: flex;
