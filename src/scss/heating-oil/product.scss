@@ -1,6 +1,8 @@
 .product {
 	padding-top: 40px;
-
+	@media (max-width: 575.98px) {
+		padding-bottom: 50px;
+	}
 	&__wrapper {
 		display: flex;
 		padding: 25px 50px;
