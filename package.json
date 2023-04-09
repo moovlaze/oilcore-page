@@ -43,6 +43,7 @@
 		"webpack-stream": "^7.0.0"
 	},
 	"dependencies": {
+		"paginationjs": "^2.6.0",
 		"swiper": "^9.2.0"
 	}
 }

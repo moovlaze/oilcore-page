@@ -2,114 +2,127 @@ import posts from "./posts.js";
 
 export default () => {
 	const articlesBody = document.querySelector(".articles__body");
-	const pagging = document.querySelector(".pagging");
-	const paggingList = document.querySelector(".pagging__list");
+	const pagging = document.querySelector(".pagging__list");
 	const btnPrev = document.getElementById("pagging-prev");
 	const btnNext = document.getElementById("pagging-next");
 
-	if (!articlesBody || !pagging) return;
+	const limit = window.innerWidth <= 767 ? 3 : 5;
+	const pageCount = Math.ceil(posts.length / limit);
+	let thisPage = 1;
 
-	let notesOnPage = window.innerWidth <= 767 ? 3 : 5;
-	let quantityPaginationBtn = Math.ceil(posts.length / notesOnPage);
+	const disableButton = (button) => {
+		button.classList.remove("pagging__word_active");
+		button.setAttribute("disabled", true);
+	};
 
-	const renderPaginationBtn = () => {
-		for (let i = 1; i <= quantityPaginationBtn; i++) {
-			let newBtn = `
-			<a href="#!" class="pagging__list-link">${i}</a>`;
+	const enableButton = (button) => {
+		button.classList.add("pagging__word_active");
+		button.removeAttribute("disabled");
+	};
 
-			if (i === 1)
-				newBtn = `
-			<a href="#!" class="pagging__list-link pagging__list-link_active">${i}</a>`;
+	const handlePageButtonsStatus = () => {
+		if (thisPage === 1) {
+			disableButton(btnPrev);
+		} else {
+			enableButton(btnPrev);
+		}
 
-			if (i > 5 && i < quantityPaginationBtn + 1) {
-				newBtn = `
-			<a href="#!" class="pagging__list-link">...</a>`;
-			}
-
-			paggingList.insertAdjacentHTML("beforeend", newBtn);
+		if (pageCount === thisPage) {
+			disableButton(btnNext);
+		} else {
+			enableButton(btnNext);
 		}
 	};
 
-	const hiddenPaginationBtn = () => {
-		const paginationBtn = document.querySelectorAll(".pagging__list-link");
-		const fiveBtn = paginationBtn[4];
-		const lastBtn = paginationBtn[paginationBtn.length - 1];
+	const handleActivePageNumber = () => {
+		document.querySelectorAll(".pagging__list-link").forEach((button) => {
+			button.classList.remove("pagging__list-link_active");
+			const pageIndex = Number(button.getAttribute("page-index"));
+			if (pageIndex == thisPage) {
+				button.classList.add("pagging__list-link_active");
+			}
+		});
+	};
 
-		if (paginationBtn.length < 6) return;
-		console.log(fiveBtn);
-		console.log(lastBtn);
+	const appendPageNumber = (index) => {
+		const pageNumber = document.createElement("button");
+		pageNumber.className = "pagging__list-link";
+		pageNumber.innerHTML = index;
+		pageNumber.setAttribute("page-index", index);
+		pageNumber.setAttribute("aria-label", "Page " + index);
+
+		pagging.appendChild(pageNumber);
+	};
+
+	const getPaginationNumbers = () => {
+		for (let i = 1; i <= pageCount; i++) {
+			appendPageNumber(i);
+		}
 	};
 
 	const renderPosts = (notes) => {
+		articlesBody.innerHTML = "";
 		notes.forEach((note) => {
 			let newPost = `<article class="articles__article article">
-      <div class="article__pic">
-        <img src="${note.image}" alt="картинка">
-      </div>
-      <div class="article__info">
-        <h2 class="article__title">${note.title}</h2>
-        <ul class="article__list">
-          <li class="article__list-item">Дата: ${note.date}</li>
-          <li class="article__list-item">Автор: ${note.author}</li>
-          <li class="article__list-item">Просмотров: ${note.views}</li>
-          <li class="article__list-item">Комментариев: ${note.comments}</li>
-        </ul>
-        <p class="article__text">${note.text}</p>
-        <a href="./note.html" class="article__btn btn btn_border">Читать далее</a>
-      </div>
-    </article>`;
+		  <div class="article__pic">
+		    <img src="${note.image}" alt="картинка">
+		  </div>
+		  <div class="article__info">
+		    <h2 class="article__title">${note.title}</h2>
+		    <ul class="article__list">
+		      <li class="article__list-item">Дата: ${note.date}</li>
+		      <li class="article__list-item">Автор: ${note.author}</li>
+		      <li class="article__list-item">Просмотров: ${note.views}</li>
+		      <li class="article__list-item">Комментариев: ${note.comments}</li>
+		    </ul>
+		    <p class="article__text">${note.text}</p>
+		    <a href="./note.html" class="article__btn btn btn_border">Читать далее</a>
+		  </div>
+		</article>`;
 
 			articlesBody.insertAdjacentHTML("beforeend", newPost);
 		});
 	};
 
-	const tapNumber = (e) => {
-		e.preventDefault();
+	const setCurrentPage = (pageNum) => {
+		thisPage = pageNum;
 
-		const paginationBtn = document.querySelectorAll(".pagging__list-link");
+		handleActivePageNumber();
+		handlePageButtonsStatus();
 
-		let currentPage = +e.target.textContent;
-		let start = (currentPage - 1) * notesOnPage;
-		let end = notesOnPage + start;
-		let notes = posts.slice(start, end);
+		const start = (thisPage - 1) * limit;
+		const end = limit * thisPage - 1;
+		const arr = [];
 
-		paginationBtn.forEach((item) => {
-			item.classList.remove("pagging__list-link_active");
+		posts.forEach((item, index) => {
+			if (index >= start && index <= end) {
+				arr.push(item);
+			}
 		});
 
-		e.target.classList.add("pagging__list-link_active");
-
-		articlesBody.innerHTML = "";
-		renderPosts(notes);
+		renderPosts(arr);
 	};
 
-	const tapWordNext = (e) => {
-		let activeBtn = document.querySelector(".pagging__list-link_active");
-		let nextActiveBtn = document.querySelector(
-			".pagging__list-link_active ~ .pagging__list-link"
-		);
+	window.addEventListener("load", () => {
+		getPaginationNumbers();
+		setCurrentPage(1);
 
-		if (!nextActiveBtn) {
-			e.target.setAttribute("disabled", "true");
-			e.target.classList.remove("pagging__word_active");
-			return;
-		}
+		btnPrev.addEventListener("click", () => {
+			setCurrentPage(thisPage - 1);
+		});
 
-		activeBtn.classList.remove("pagging__list-link_active");
-		nextActiveBtn.classList.add("pagging__list-link_active");
-	};
+		btnNext.addEventListener("click", () => {
+			setCurrentPage(thisPage + 1);
+		});
 
-	pagging.addEventListener("click", (e) => {
-		if (e.target.closest(".pagging__list-link")) tapNumber(e);
-		if (e.target.closest(".pagging__word_next")) tapWordNext(e);
+		document.querySelectorAll(".pagging__list-link").forEach((button) => {
+			const pageIndex = Number(button.getAttribute("page-index"));
+
+			if (pageIndex) {
+				button.addEventListener("click", () => {
+					setCurrentPage(pageIndex);
+				});
+			}
+		});
 	});
-
-	renderPaginationBtn();
-	hiddenPaginationBtn();
-
-	if (window.innerWidth <= 767) {
-		renderPosts(posts.slice(0, 3));
-	} else {
-		renderPosts(posts.slice(0, 5));
-	}
 };
