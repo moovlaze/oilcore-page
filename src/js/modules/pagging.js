@@ -55,7 +55,7 @@ export default () => {
           <li class="article__list-item">Комментариев: ${note.comments}</li>
         </ul>
         <p class="article__text">${note.text}</p>
-        <a href="" class="article__btn btn btn_border">Читать далее</a>
+        <a href="./note.html" class="article__btn btn btn_border">Читать далее</a>
       </div>
     </article>`;
 
