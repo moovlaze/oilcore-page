@@ -33,6 +33,8 @@ export const popupImg = function () {
 	const images = document.querySelectorAll("img[data-popup-img]");
 	const popup = document.querySelector(".popup-img");
 
+	if (!images || !popup) return;
+
 	const openPopup = () => {
 		popup.classList.add("popup-img_visible");
 		document.body.classList.add("page_lock");
@@ -58,6 +60,8 @@ export const popupImg = function () {
 export const scrollToSection = function () {
 	const links = document.querySelectorAll("a[data-scroll-link]");
 	const sections = document.querySelectorAll("section[data-scroll-section]");
+
+	if (!links || !sections) return;
 
 	const scrollBehavior = (selector) => {
 		document.querySelector(`.${selector}`).scrollIntoView({

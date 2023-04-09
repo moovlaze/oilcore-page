@@ -100,3 +100,21 @@
 		color: $color-accent;
 	}
 }
+.hero-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 10px;
+	max-width: 880px;
+	margin: 0 auto;
+	&__item {
+		font-family: $font-family-rubik;
+		font-size: 20px;
+		line-height: 24px;
+		color: #cecece;
+		@media (max-width: 575.98px) {
+			font-size: 14px;
+			line-height: 17px;
+		}
+	}
+}
