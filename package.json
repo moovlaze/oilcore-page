@@ -43,7 +43,7 @@
 		"webpack-stream": "^7.0.0"
 	},
 	"dependencies": {
-		"paginationjs": "^2.6.0",
+		"aos": "^3.0.0-beta.6",
 		"swiper": "^9.2.0"
 	}
 }

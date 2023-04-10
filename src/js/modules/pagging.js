@@ -10,6 +10,8 @@ export default () => {
 	const pageCount = Math.ceil(posts.length / limit);
 	let thisPage = 1;
 
+	if (!articlesBody || !pagging) return;
+
 	const disableButton = (button) => {
 		button.classList.remove("pagging__word_active");
 		button.setAttribute("disabled", true);
